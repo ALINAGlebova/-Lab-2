@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <conio.h>
+
+long get_fibbonachi_via_cycle(long);
+
+void main()
+{
+    long num;
+    scanf_s("%ld", &num);
+    printf("%ld", get_fibbonachi_via_cycle(num));
+}
+
+long get_fibbonachi_via_cycle(long num)
+{
+    long prev_num = 1;
+    long res = 1;
+    for (long i = 0; i < num - 2; i++)
+    {
+        res += prev_num;
+        prev_num = res - prev_num;
+    }
+
+    return res;
+}
