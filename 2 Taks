@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <conio.h>
+
+long get_fibbonachi_via_recursion(long);
+
+void main()
+{
+    long num;
+    scanf_s("%d", &num);
+    printf("%ld", get_fibbonachi_via_recursion(num));
+}
+
+long get_fibbonachi_via_recursion(long num)
+{
+    if (num == 0)
+    {
+        return 0;
+    }
+    else if (num == 1 || num == 2)
+    {
+        return 1;
+    }
+
+    static long cache[] = { 1, 1 };
+    if (cache[num] == 0)
+    {
+        cache[num] = get_fibbonachi_via_recursion(num - 1) + get_fibbonachi_via_recursion(num - 2);
+    }
+
+    return cache[num];
+}
